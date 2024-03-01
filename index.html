@@ -7,8 +7,12 @@
     <title>Match the bottles</title>
   </head>
   <body>
+    <div class="nav"><h1>Match the Bottles</h1></div>
     <div class="main_container">
-      <div class="div"><h1>Match the Bottles</h1></div>
+      <div class="tool">
+        <p id="timer">0s</p>
+        <a onclick="restart()" title="restart">🔁</a>
+      </div>
       <div class="game_container">
         <div class="game_bottle one"></div>
         <div class="game_bottle two"></div>
@@ -19,7 +23,6 @@
       <div class="match_counter">
         <div id="counter" class="counter">
           <h1>0</h1>
-          <a onclick="restart()" title="reset">🔁</a>
         </div>
       </div>
       <div class="template_contaier">

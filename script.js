@@ -6,6 +6,9 @@ var game_colors = ["red", "green", "blue", "yellow",  "purple"];
 var trackMoved = [0, 0, 0, 0, 0];
 var counterDisp = document.getElementById('counter');
 
+var time = 0;
+let counter = null;
+
 
 function attach_clickListeners(){
     for(let i = 0; i < gamebottles.length; i++){
@@ -34,14 +37,15 @@ function checkGame(){
         }
     }
     if (count == 5){
-        let content = `<h1>You Got It!</h1> <a onclick="restart()" title="reset">🔁</a>`
+        clearInterval(counter);
+        let content = `<h1>You Got It!</h1> <br/> <p>Elapsed time: ${time}s.</p>`
         counterDisp.innerHTML = content;
         curtain.style.display = 'none';
         show_templates();
         color_templates();
     }
     else{
-        let content = `<h1>${count}</h1> <a onclick="restart()" title="reset">🔁</a>`
+        let content = `<h1> Matched bottles: ${count}</h1> `
         counterDisp.innerHTML = content
     }
     return count;
@@ -100,12 +104,24 @@ function checkShuffle(){
     }
 }
 
+function restart(){
+    location.reload();
+}
+
+function startCounter(){
+            let cont = `0s`;
+            document.getElementById('timer').innerHTML = cont;
+    counter = setInterval(()=> {
+            let cont = `${++time}s`;
+            document.getElementById('timer').innerHTML = cont;
+    }, 1000);
+}
+
 checkShuffle()
 color_templates();
 color_game();
 attach_clickListeners();
+startCounter();
 checkGame();
 
-function restart(){
-    location.reload();
-}
+
