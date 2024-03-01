@@ -34,13 +34,15 @@ function checkGame(){
         }
     }
     if (count == 5){
-        counterDisp.innerHTML = "<h1> You Got It </h1>"
+        let content = `<h1>You Got It!</h1> <a onclick="restart()" title="reset">🔁</a>`
+        counterDisp.innerHTML = content;
         curtain.style.display = 'none';
         show_templates();
         color_templates();
     }
     else{
-        counterDisp.innerHTML = "<h1>"+ count +"</h1>"
+        let content = `<h1>${count}</h1> <a onclick="restart()" title="reset">🔁</a>`
+        counterDisp.innerHTML = content
     }
     return count;
 }
@@ -103,3 +105,7 @@ color_templates();
 color_game();
 attach_clickListeners();
 checkGame();
+
+function restart(){
+    location.reload();
+}
